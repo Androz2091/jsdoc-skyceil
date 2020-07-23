@@ -507,13 +507,6 @@ exports.publish = (taffyData, opts, tutorials) => {
         }
     });
 
-    // update outdir if necessary, then create outdir
-    packageInfo = ( find({kind: 'package'}) || [] )[0];
-    if (packageInfo && packageInfo.name) {
-        outdir = path.join( outdir, packageInfo.name, (packageInfo.version || '') );
-    }
-    fs.mkPath(outdir);
-
     // copy the template's static files to outdir
     fromDir = path.join(templatePath, 'static');
     staticFiles = fs.ls(fromDir, 3);
